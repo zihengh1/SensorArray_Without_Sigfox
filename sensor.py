@@ -35,25 +35,25 @@ while True:
                 ser.close()
                 print "serial.port is closed"
                 print(e)
+    if len(data):
+        data += '|%s_%s' % (str(now_time[0]), str(now_time[1]))
+        data_dict = Enc.split_string(data)
+        T3_binstr = Enc.dec_to_binstr(data_dict)
+        T3_hexstr = Enc.bin_to_hex(T3_binstr)
+        print "T3_hexstr : ", T3_hexstr
     
-    data += '|%s_%s' % (str(now_time[0]), str(now_time[1]))
-    data_dict = Enc.split_string(data)
-    T3_binstr = Enc.dec_to_binstr(data_dict)
-    T3_hexstr = Enc.bin_to_hex(T3_binstr)
-    print "T3_hexstr : ", T3_hexstr
-    
-    try: 
-        restful_str3 = "wget -O /tmp/last_upload.log \"" + Restful_URL + "?device_id=" + device_id + "&data=" + T3_hexstr + "\""
-        os.system(restful_str3)
-    except Exception as e:
-        print(e)
-
-    data += '|' + device_id
- 	
-    with open(path + str(now_time[0]) + ".txt", "a") as f:
         try: 
-            f.write(data + "\n")
-        except:
-            print "Error: writing to SD"	
+            restful_str3 = "wget -O /tmp/last_upload.log \"" + Restful_URL + "?device_id=" + device_id + "&data=" + T3_hexstr + "\""
+            os.system(restful_str3)
+        except Exception as e:
+            print(e)
+
+        data += '|' + device_id
+ 	
+        with open(path + str(now_time[0]) + ".txt", "a") as f:
+            try: 
+                f.write(data + "\n")
+            except:
+                print "Error: writing to SD"	
     
     time.sleep(282)
