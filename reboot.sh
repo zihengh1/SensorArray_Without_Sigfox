@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 1
+sleep 5
 [ -f /home/pi/SensorArray_Without_Sigfox/sensor.py ] && {
     /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox fetch origin
     /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox reset --hard origin/master
