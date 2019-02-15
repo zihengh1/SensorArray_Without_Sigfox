@@ -5,8 +5,8 @@ sleep 5
 sudo killall -o 1d python
 
 [ -f /home/pi/SensorArray_Without_Sigfox/sensor.py ] && {
-   # /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox fetch origin
-   # /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox reset --hard origin/master
+    /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox fetch origin
+    /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox reset --hard origin/master
     /usr/bin/sudo nohup python -u /home/pi/SensorArray_Without_Sigfox/sensor.py &
 } || {
     /usr/bin/sudo git clone https://github.com/zihengh1/SensorArray_Without_Sigfox/ /home/pi/SensorArray_Without_Sigfox
