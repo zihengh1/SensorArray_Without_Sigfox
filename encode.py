@@ -9,7 +9,7 @@ def split_string(msg):
     return values
 
 def dec_to_binstr(data_dict):
-    order = ['s1', 's2', 's3', 's4', 's5']
+    order = ['s0', 's1', 's2', 's3', 's4', 's5']
     T3_binstr = "0011"
     for s in order:
         if s in data_dict:

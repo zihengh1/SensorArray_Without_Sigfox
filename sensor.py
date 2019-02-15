@@ -4,7 +4,19 @@ import os
 from datetime import datetime
 import encode as Enc
 
-device_id = "CCLLJJ"
+def getMAC(interface='wlan0'):
+    try:
+        str = open('/sys/class/net/%s/address' %interface).read()
+    except:
+        str = "00:00:00:00:00:00"
+    return str[0:17]
+
+macString = getMAC('wlan0')
+device_id = macString[9:11]+macString[12:14]+macString[15:17]
+device_id = device_id.upper()
+#print(device_id)
+
+#device_id = "CCLLJJ"
 sigfox_id = -1
 path = "/home/pi/Data/"
 Restful_URL = "https://data.lass-net.org/Upload/SigFox.php"
