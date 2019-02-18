@@ -2,7 +2,7 @@
 
 sleep 5
 #kill python run more then 1 day
-sudo killall -o 1d python
+sudo killall -o 23h59m python
 
 [ -f /home/pi/SensorArray_Without_Sigfox/sensor.py ] && {
     /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox fetch origin
