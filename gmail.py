@@ -47,7 +47,7 @@ body = device_id + " , " +  str(now_time[0])
 msg.attach(MIMEText(body, 'plain')) 
 
 # open the file to be sent 
-filename = device_id + "|" + str(now_time[0]) + ".txt"
+filename = device_id + "_" + str(now_time[0]) + ".txt"
 attachment = open("../Data/" + str(now_time[0]) + ".txt", "rb") 
 
 # instance of MIMEBase and named as p 
