@@ -25,8 +25,8 @@ device_id = device_id.upper()
 now_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S").split(" ")
 
 # email start
-fromaddr = "itrisensor@gmail.com"
-toaddr = "ryan4559@gmail.com"
+fromaddr = "iisnrlpim25@gmail.com"
+toaddr = "kexwoo@gmail.com"
 
 # instance of MIMEMultipart 
 msg = MIMEMultipart() 
