@@ -25,7 +25,7 @@ device_id = device_id.upper()
 now_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S").split(" ")
 
 # email start
-fromaddr = "kexwoo@gmail.com"
+fromaddr = "itrisensor@gmail.com"
 toaddr = "ryan4559@gmail.com"
 
 # instance of MIMEMultipart 
@@ -71,7 +71,7 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls() 
 
 # Authentication 
-s.login(fromaddr, "abcdef0503") 
+s.login(fromaddr, "PiM25PiM25") 
 
 # Converts the Multipart msg into a string 
 text = msg.as_string() 
