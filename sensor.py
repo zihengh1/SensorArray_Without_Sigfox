@@ -2,7 +2,7 @@
 #         Make sure your /etc/crontab is setting correct.
 #         */5 * * * * root exec /usr/bin/sudo python -u /home/pi/SensorArray_Without_Sigfox/sensor.py
 #         57 23 * * * root exec /usr/bin/sudo python -u /home/pi/SensorArray_Without_Sigfox/gmail.py
-#ver 1.0.0
+#         ver 1.0.0
 
 import serial
 import time
