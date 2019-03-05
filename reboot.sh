@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 5
+sleep 10
 #kill python run more then 1 day
 #sudo killall -o 23h59m python
 
