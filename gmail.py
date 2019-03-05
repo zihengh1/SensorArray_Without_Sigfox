@@ -1,3 +1,4 @@
+# ver 1.0.0
 # Python code to illustrate Sending mail with attachments 
 # from your Gmail account 
 
