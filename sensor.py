@@ -29,6 +29,7 @@ Restful_URL = "https://data.lass-net.org/Upload/SigFox.php"
 
 #while True:
 data = ""
+csvdata = ""
 now_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S").split(" ")
 for i in range(0, 5):
     if i is not sigfox_id:
@@ -43,7 +44,8 @@ for i in range(0, 5):
                     bytesize = serial.EIGHTBITS,
               	)
                 data += '|s%d:%d' % (i, int(ser.read(32)[7].encode('hex'), 16))
-                ser.flushInput()
+                csvdata += '%d' % (int(ser.read(32)[7].encode('hex'), 16))
+		ser.flushInput()
                 ser.close()
                 time.sleep(0.2)
             else:
@@ -53,8 +55,10 @@ for i in range(0, 5):
             ser.close()
             print "serial.port is closed"
             print(e)
+    csvdata += ','
 if len(data):
     data += '|%s_%s' % (str(now_time[0]), str(now_time[1]))
+    csvdata += '%s_%s,' % (str(now_time[0]), str(now_time[1]))
     data_dict = Enc.split_string(data)
     T3_binstr = Enc.dec_to_binstr(data_dict)
     T3_hexstr = Enc.bin_to_hex(T3_binstr)
@@ -72,6 +76,14 @@ if len(data):
         try: 
             f.write(data + "\n")
         except:
-            print "Error: writing to SD"	
+            print "Error: writing to SD"
+
+    csvdata += device_id
+    with open(path + str(now_time[0]) + ".csv", "a") as f:
+        try:
+            f.write(csvdata + "\r\n")
+        except:
+            print "Error: writing to SD"
+
 
     #time.sleep(282)

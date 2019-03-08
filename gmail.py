@@ -1,10 +1,11 @@
-# ver 1.0.0
 # Python code to illustrate Sending mail with attachments 
 # from your Gmail account 
 
 # libraries to be imported 
+import os
 import time
 from datetime import datetime
+from datetime import timedelta
 
 import smtplib 
 from email.mime.multipart import MIMEMultipart 
@@ -48,8 +49,8 @@ body = device_id + " , " +  str(now_time[0])
 msg.attach(MIMEText(body, 'plain')) 
 
 # open the file to be sent 
-filename = device_id + "_" + str(now_time[0]) + ".txt"
-attachment = open("/home/pi/Data/" + str(now_time[0]) + ".txt", "rb") 
+filename = device_id + "_" + str(now_time[0]) + ".csv"
+attachment = open("/home/pi/Data/" + str(now_time[0]) + ".csv", "rb") 
 
 # instance of MIMEBase and named as p 
 p = MIMEBase('application', 'octet-stream') 
@@ -83,3 +84,13 @@ s.sendmail(fromaddr, toaddr, text)
 # terminating the session 
 s.quit() 
 
+
+# create next day log file
+now_time = (datetime.now()+timedelta(days = 1)).strftime("%Y-%m-%d %H:%M:%S").split(" ")
+path = "/home/pi/Data/"
+
+with open(path + str(now_time[0]) + ".csv", "a") as f:
+        try: 
+            f.write( "s0,s1,s2,s3,s4,datetime,device_id\r\n")
+        except:
+            print "Error: writing to SD"
