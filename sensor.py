@@ -58,7 +58,7 @@ for i in range(0, 5):
     csvdata += ','
 if len(data):
     data += '|%s_%s' % (str(now_time[0]), str(now_time[1]))
-    csvdata += '%s_%s,' % (str(now_time[0]), str(now_time[1]))
+    csvdata += '%s %s,' % (str(now_time[0]), str(now_time[1]))
     data_dict = Enc.split_string(data)
     T3_binstr = Enc.dec_to_binstr(data_dict)
     T3_hexstr = Enc.bin_to_hex(T3_binstr)
