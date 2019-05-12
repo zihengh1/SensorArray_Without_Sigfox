@@ -1,8 +1,6 @@
 #!/bin/bash
 
 sleep 10
-#set timezone to UTC
-sudo timedatectl set-timezone UTC
 [ -f /home/pi/SensorArray_Without_Sigfox/sensor.py ] && {
     /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox remote update
     /usr/bin/sudo git -C /home/pi/SensorArray_Without_Sigfox fetch origin
@@ -13,3 +11,6 @@ sudo timedatectl set-timezone UTC
     #/usr/bin/sudo nohup python -u /home/pi/SensorArray_Without_Sigfox/sensor.py &
 }
 
+sleep 10
+#set timezone to UTC
+sudo timedatectl set-timezone UTC
